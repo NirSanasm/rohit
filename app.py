@@ -3,6 +3,7 @@ import subprocess
 import platform
 import socket
 import speedtest
+import os
 
 app = Flask(__name__)
 
@@ -65,4 +66,5 @@ def info():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 10000))  # Render provides PORT
+    app.run(host='0.0.0.0', port=port)
